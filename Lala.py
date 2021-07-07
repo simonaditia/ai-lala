@@ -6,6 +6,7 @@ import webbrowser
 import os
 import smtplib
 import pyaudio
+import random
 
 print("initializing Lala")
 
@@ -84,12 +85,24 @@ elif "open google" in query.lower():
 elif "play music" in query.lower():
     print("Wait I will play music")
     speak("Wait I will play music")
-    songs_dir = "D:/Belajar/Python/music"
+    songs_dir = "D:/Belajar/Python/music/"
     songs = os.listdir(songs_dir)
+    random_song = songs_dir + random.choice(songs)
     print(songs)
-    os.startfile(os.path.join(songs_dir, songs[0]))
+    print(random_song)
+    os.startfile(random_song)
+    # os.system(random_song)
 
 elif "the time" in query.lower():
     strTime = datetime.datetime.now().strftime("%H:%M:%S")
     print(strTime)
     speak(f"{MASTER} the time is {strTime}")
+
+elif "open spotify" in query.lower():
+    print("Okay, I will open Spotify")
+    speak('Okay, I will open Spotify')
+    url = "open.spotify.com"
+    chrome_path = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+    webbrowser.get(chrome_path).open(url)
+
+# speak("Next Comand! Sir!")
